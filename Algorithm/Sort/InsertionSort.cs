@@ -1,9 +1,4 @@
-﻿using Algorithm.Sort;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Algorithm.Sort
+﻿namespace Algorithm.Sort
 {
     public class InsertionSort : SortBase
     {

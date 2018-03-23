@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Algorithm.Sort
+﻿namespace Algorithm.Sort
 {
     public abstract class SortBase : ISort
     {

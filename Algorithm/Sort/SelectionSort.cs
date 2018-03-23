@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Algorithm.Sort
+﻿namespace Algorithm.Sort
 {
     public class SelectionSort : SortBase
     {
