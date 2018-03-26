@@ -4,18 +4,24 @@
     {
         public override void Sort(int[] arr)
         {
-            for (int i = 1; i < arr.Length; i++)
+            //增量每次都/2
+            for (int step = arr.Length / 2; step >= 1; step = step / 2)
             {
-                for (int j = i, cur = arr[i]; j >= 0; j--)
+                //从增量那组开始进行插入排序，直至完毕
+                for (int i = step; i < arr.Length; i++)
                 {
-                    if (j == 0 || cur >= arr[j - 1])
+
+                    for (int j = i, cur = arr[i]; j >= 0; j -= step)
                     {
-                        arr[j] = cur;
-                        break;
-                    }
-                    else
-                    {
-                        arr[j] = arr[j - 1];
+                        if (j < step || cur >= arr[j - step])
+                        {
+                            arr[j] = cur;
+                            break;
+                        }
+                        else
+                        {
+                            arr[j] = arr[j - step];
+                        }
                     }
                 }
             }
