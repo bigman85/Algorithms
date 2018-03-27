@@ -6,31 +6,44 @@ namespace Algorithm.Sort
     {
         public override void Sort(int[] arr)
         {
-            SubArraySort(arr, 0, arr.Length - 1);
+            SubArraySort(arr, 0, arr.Length);
         }
 
-        public void SubArraySort(int[] arr, int start, int end)
+
+        void SubArraySort(int[] arr, int start, int length)
         {
-            if (end - start < 2)
+            if (length <= 1)
             {
                 return;
             }
 
-            int pivot = arr[arr.Length - 1];
-            int storeIndex = 0;
+            int storeIndex = GetPartion(arr, start, length);
 
-            for (int i = 0; i < arr.Length; i++)
+            SubArraySort(arr, start, storeIndex - start);
+            SubArraySort(arr, storeIndex + 1, start + length - storeIndex - 1);
+
+        }
+        int GetPartion(int[] arr, int start, int length)
+        {
+            int res = start + length - 1;
+            int pivot = arr[start + length - 1];
+            for (int i = 0; i < length && res < start + length; i++)
             {
-                if (arr[i] > pivot)
+                if (arr[start + i] > pivot)
                 {
-                    Swap(arr, i, storeIndex);
-                    storeIndex++;
+                    for (int j = i; j < length; j++)
+                    {
+                        if (arr[start + j] <= pivot)
+                        {
+                            Swap(arr, start + i, start + j);
+                            res = start + i;
+                            break;
+                        }
+                    }
                 }
             }
 
-            SubArraySort(arr, 0, storeIndex - 1);
-            SubArraySort(arr, storeIndex + 1, arr.Length - 1);
-
+            return res;
         }
     }
 }
