@@ -6,44 +6,33 @@ namespace Algorithm.Sort
     {
         public override void Sort(int[] arr)
         {
-            SubArraySort(arr, 0, arr.Length);
+            SubArraySort(arr, 0, arr.Length-1);
         }
 
 
-        void SubArraySort(int[] arr, int start, int length)
+        void SubArraySort(int[] arr, int start, int end)
         {
-            if (length <= 1)
+            if (end-start <=1)
             {
                 return;
             }
 
-            int storeIndex = GetPartion(arr, start, length);
-
-            SubArraySort(arr, start, storeIndex - start);
-            SubArraySort(arr, storeIndex + 1, start + length - storeIndex - 1);
-
+            int storeIndex = GetPartion(arr, start, end);
+            SubArraySort(arr, start, storeIndex - 1);
+            SubArraySort(arr, storeIndex + 1, end);
         }
-        int GetPartion(int[] arr, int start, int length)
+        int GetPartion(int[] array, int start, int end)
         {
-            int res = start + length - 1;
-            int pivot = arr[start + length - 1];
-            for (int i = 0; i < length && res < start + length; i++)
-            {
-                if (arr[start + i] > pivot)
+            int pivot = (int)(start + new Random().NextDouble() * (end - start + 1));
+            int smallIndex = start - 1;
+            for (int i = start; i <= end; i++)
+                if (array[i] <= array[end])
                 {
-                    for (int j = i; j < length; j++)
-                    {
-                        if (arr[start + j] <= pivot)
-                        {
-                            Swap(arr, start + i, start + j);
-                            res = start + i;
-                            break;
-                        }
-                    }
+                    smallIndex++;
+                    if (i > smallIndex)
+                        Swap(array, i, smallIndex);
                 }
-            }
-
-            return res;
+            return smallIndex;
         }
     }
 }
