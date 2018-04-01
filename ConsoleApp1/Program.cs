@@ -7,8 +7,8 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            var hs = new CountingSort();
-            var arr = new int[] { 1,2,3,4,5 };
+            var hs = new BucketSort();
+            var arr = new int[] { 4, 5, 3, 4, 3};
             hs.Sort(arr);
 
             foreach (var item in arr)
