@@ -10,6 +10,7 @@ namespace AlgorithmTests.Sort
         [Theory]
         [InlineData(new int[] { 1, 2, 3, 4, 5 }, new int[] { 1, 2, 3, 4, 5 })]
         [InlineData(new int[] { 4, 5, 3, 4, 3 }, new int[] { 3, 3, 4, 4, 5 })]
+        [InlineData(new int[] { 14, 5, 13, 125, 4, 3 }, new int[] { 3, 4, 5, 13, 14, 125 })]
         [InlineData(new int[] { 1 }, new int[] { 1 })]
         [InlineData(new int[] { }, new int[] { })]
         public virtual void SortTest_Normal(int[] sourceArr, int[] expectArr)
