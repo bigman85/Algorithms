@@ -12,7 +12,7 @@ namespace Algorithm.Sort
 
         void SubArraySort(int[] arr, int start, int end)
         {
-            if (end-start <=1)
+            if (end-start <1)
             {
                 return;
             }
